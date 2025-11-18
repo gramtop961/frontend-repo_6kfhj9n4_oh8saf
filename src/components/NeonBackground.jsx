@@ -1,24 +1,89 @@
 export default function NeonBackground() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-      {/* Deep cosmic wash */}
-      <div className="absolute -top-1/3 -left-1/3 w-[1200px] h-[1200px] rounded-full bg-fuchsia-500/15 blur-[120px]" />
-      <div className="absolute -bottom-1/3 -right-1/3 w-[1200px] h-[1200px] rounded-full bg-indigo-500/15 blur-[120px]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1600px] h-[1600px] rounded-full bg-cyan-400/10 blur-[140px]" />
+      {/* Deeper, more vibrant cosmic wash */}
+      <div className="absolute -top-1/2 -left-1/3 w-[1400px] h-[1400px] rounded-full blur-[140px] mix-blend-screen"
+           style={{
+             background:
+               "radial-gradient(800px 800px at 30% 20%, rgba(217,70,239,0.28), transparent 60%)," +
+               "radial-gradient(900px 700px at 80% 30%, rgba(34,211,238,0.22), transparent 60%)," +
+               "radial-gradient(1100px 900px at 50% 80%, rgba(251,191,36,0.18), transparent 60%)"
+           }}
+      />
+      <div className="absolute -bottom-1/2 -right-1/3 w-[1400px] h-[1400px] rounded-full blur-[140px] mix-blend-screen"
+           style={{
+             background:
+               "radial-gradient(1000px 800px at 70% 60%, rgba(16,185,129,0.20), transparent 60%)," +
+               "radial-gradient(900px 900px at 20% 70%, rgba(99,102,241,0.22), transparent 60%)"
+           }}
+      />
 
-      {/* Celestials: big and background-only */}
-      <IconStar className="text-white/15 drop-shadow-[0_0_40px_rgba(255,255,255,0.5)] absolute -top-10 left-1/4 w-56 h-56 rotate-12" />
-      <IconMoon className="text-zinc-100/15 drop-shadow-[0_0_50px_rgba(245,245,245,0.5)] absolute top-10 right-[12%] w-72 h-72" />
-      <IconSun className="text-yellow-300/15 drop-shadow-[0_0_60px_rgba(253,224,71,0.6)] absolute -bottom-8 right-1/5 w-80 h-80" />
+      {/* Celestials: big, neon glows, background-only */}
+      <LayeredGlow>
+        <IconStar className="absolute -top-6 left-[18%] w-64 h-64 text-fuchsia-200/25" />
+      </LayeredGlow>
+      <LayeredGlow>
+        <IconMoon className="absolute top-6 right-[10%] w-80 h-80 text-cyan-100/25" />
+      </LayeredGlow>
+      <LayeredGlow>
+        <IconSun className="absolute -bottom-10 right-[22%] w-96 h-96 text-amber-200/25" />
+      </LayeredGlow>
 
-      {/* Florals and figures: oversized, low-opacity silhouettes */}
-      <FlowerHibiscus className="text-pink-300/12 drop-shadow-[0_0_40px_rgba(244,114,182,0.4)] absolute top-[38%] -left-20 w-96 h-96" />
-      <FlowerTulip className="text-fuchsia-300/12 drop-shadow-[0_0_40px_rgba(217,70,239,0.4)] absolute bottom-[10%] left-[8%] w-80 h-80" />
-      <FlowerRose className="text-rose-300/12 drop-shadow-[0_0_40px_rgba(244,63,94,0.4)] absolute top-6 left-1/2 -translate-x-1/2 w-80 h-80" />
-      <Angel className="text-white/12 drop-shadow-[0_0_50px_rgba(255,255,255,0.5)] absolute bottom-[6%] left-1/2 -translate-x-1/2 w-96 h-96" />
-      <Pomegranate className="text-pink-200/12 drop-shadow-[0_0_44px_rgba(251,113,133,0.5)] absolute top-[24%] right-[18%] w-72 h-72" />
+      {/* Florals and figures: oversized neon silhouettes with glow */}
+      <LayeredGlow>
+        <FlowerHibiscus className="absolute top-[36%] -left-16 w-[26rem] h-[26rem] text-pink-200/20 rotate-[-8deg]" />
+      </LayeredGlow>
+      <LayeredGlow>
+        <FlowerTulip className="absolute bottom-[8%] left-[6%] w-[22rem] h-[22rem] text-fuchsia-200/22 rotate-[10deg]" />
+      </LayeredGlow>
+      <LayeredGlow>
+        <FlowerRose className="absolute top-8 left-1/2 -translate-x-1/2 w-[22rem] h-[22rem] text-rose-200/20" />
+      </LayeredGlow>
+      <LayeredGlow>
+        <Angel className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[28rem] h-[28rem] text-zinc-100/18" />
+      </LayeredGlow>
+      <LayeredGlow>
+        <Pomegranate className="absolute top-[24%] right-[16%] w-[22rem] h-[22rem] text-rose-100/22" />
+      </LayeredGlow>
+
+      {/* subtle twinkle dots */}
+      <div className="absolute inset-0 opacity-50 mix-blend-screen">
+        <Twinkle count={60} />
+      </div>
     </div>
   )
+}
+
+function LayeredGlow({ children }){
+  return (
+    <div className="relative">
+      {/* soft halo */}
+      <div className="absolute inset-0 blur-[50px] opacity-80 mix-blend-screen">
+        {children}
+      </div>
+      {/* crisp silhouette */}
+      <div className="relative drop-shadow-[0_0_30px_rgba(255,255,255,0.25)]">
+        {children}
+      </div>
+    </div>
+  )
+}
+
+function Twinkle({ count = 40 }){
+  const dots = Array.from({ length: count }).map((_, i) => {
+    const left = Math.random() * 100
+    const top = Math.random() * 100
+    const size = 1 + Math.random() * 2
+    const opacity = 0.4 + Math.random() * 0.4
+    return (
+      <span
+        key={i}
+        className="absolute rounded-full bg-white"
+        style={{ left: `${left}%`, top: `${top}%`, width: size, height: size, opacity }}
+      />
+    )
+  })
+  return <div className="absolute inset-0">{dots}</div>
 }
 
 function IconStar({ className = "" }){

@@ -14,7 +14,7 @@ function App() {
           Tarot Reveal
         </h1>
         <p className="mt-3 text-fuchsia-100/90 max-w-2xl">
-          Three cards. Tap to reveal: star, moon, and sun. Ethereal neon flowers and celestial symbols drift in the background.
+          Three-card reading with a vibrant neon cosmos flowing behind. Celestial and floral symbols live only in the background — the cards remain clean, arcane, and abstract.
         </p>
       </section>
 
