@@ -1,32 +1,22 @@
 export default function NeonBackground() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-      {/* Soft cosmic gradients */}
-      <div className="absolute -top-40 -left-40 w-[420px] h-[420px] rounded-full bg-fuchsia-500/20 blur-3xl" />
-      <div className="absolute -bottom-40 -right-40 w-[420px] h-[420px] rounded-full bg-indigo-500/20 blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-cyan-400/10 blur-3xl" />
+      {/* Deep cosmic wash */}
+      <div className="absolute -top-1/3 -left-1/3 w-[1200px] h-[1200px] rounded-full bg-fuchsia-500/15 blur-[120px]" />
+      <div className="absolute -bottom-1/3 -right-1/3 w-[1200px] h-[1200px] rounded-full bg-indigo-500/15 blur-[120px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1600px] h-[1600px] rounded-full bg-cyan-400/10 blur-[140px]" />
 
-      {/* Star (white glow) */}
-      <IconStar className="text-white/80 drop-shadow-[0_0_18px_rgba(255,255,255,0.7)] absolute top-16 left-12 w-10 h-10" />
-      <IconStar className="text-white/60 drop-shadow-[0_0_14px_rgba(255,255,255,0.6)] absolute top-28 right-24 w-6 h-6 rotate-12" />
-      <IconStar className="text-white/70 drop-shadow-[0_0_14px_rgba(255,255,255,0.7)] absolute bottom-24 left-1/3 w-8 h-8 -rotate-12" />
+      {/* Celestials: big and background-only */}
+      <IconStar className="text-white/15 drop-shadow-[0_0_40px_rgba(255,255,255,0.5)] absolute -top-10 left-1/4 w-56 h-56 rotate-12" />
+      <IconMoon className="text-zinc-100/15 drop-shadow-[0_0_50px_rgba(245,245,245,0.5)] absolute top-10 right-[12%] w-72 h-72" />
+      <IconSun className="text-yellow-300/15 drop-shadow-[0_0_60px_rgba(253,224,71,0.6)] absolute -bottom-8 right-1/5 w-80 h-80" />
 
-      {/* Moon (off‑white glow) */}
-      <IconMoon className="text-zinc-100/90 drop-shadow-[0_0_22px_rgba(245,245,245,0.8)] absolute top-20 right-10 w-16 h-16" />
-
-      {/* Sun (yellow glow) */}
-      <IconSun className="text-yellow-300 drop-shadow-[0_0_24px_rgba(253,224,71,0.9)] absolute bottom-12 right-12 w-16 h-16" />
-
-      {/* Flowers */}
-      <FlowerHibiscus className="text-pink-300/80 drop-shadow-[0_0_20px_rgba(244,114,182,0.7)] absolute top-1/3 left-[-20px] w-28 h-28 opacity-70" />
-      <FlowerTulip className="text-fuchsia-300/80 drop-shadow-[0_0_20px_rgba(217,70,239,0.6)] absolute bottom-24 left-10 w-24 h-24 opacity-70" />
-      <FlowerRose className="text-rose-300/80 drop-shadow-[0_0_20px_rgba(244,63,94,0.6)] absolute top-10 left-1/2 -translate-x-1/2 w-24 h-24 opacity-60" />
-
-      {/* Angel silhouette */}
-      <Angel className="text-white/70 drop-shadow-[0_0_26px_rgba(255,255,255,0.7)] absolute bottom-10 left-1/2 -translate-x-1/2 w-28 h-28 opacity-60" />
-
-      {/* Pomegranate */}
-      <Pomegranate className="text-pink-200/80 drop-shadow-[0_0_22px_rgba(251,113,133,0.6)] absolute top-1/4 right-1/4 w-20 h-20 opacity-70" />
+      {/* Florals and figures: oversized, low-opacity silhouettes */}
+      <FlowerHibiscus className="text-pink-300/12 drop-shadow-[0_0_40px_rgba(244,114,182,0.4)] absolute top-[38%] -left-20 w-96 h-96" />
+      <FlowerTulip className="text-fuchsia-300/12 drop-shadow-[0_0_40px_rgba(217,70,239,0.4)] absolute bottom-[10%] left-[8%] w-80 h-80" />
+      <FlowerRose className="text-rose-300/12 drop-shadow-[0_0_40px_rgba(244,63,94,0.4)] absolute top-6 left-1/2 -translate-x-1/2 w-80 h-80" />
+      <Angel className="text-white/12 drop-shadow-[0_0_50px_rgba(255,255,255,0.5)] absolute bottom-[6%] left-1/2 -translate-x-1/2 w-96 h-96" />
+      <Pomegranate className="text-pink-200/12 drop-shadow-[0_0_44px_rgba(251,113,133,0.5)] absolute top-[24%] right-[18%] w-72 h-72" />
     </div>
   )
 }
@@ -93,13 +83,9 @@ function FlowerRose({ className = "" }){
 function Angel({ className = "" }){
   return (
     <svg className={className} viewBox="0 0 64 64" fill="currentColor">
-      {/* Halo */}
       <ellipse cx="32" cy="10" rx="12" ry="4" fill="currentColor" />
-      {/* Head */}
       <circle cx="32" cy="20" r="6" fill="currentColor" />
-      {/* Body */}
       <path d="M20 54c0-10 6-20 12-20s12 10 12 20z" />
-      {/* Wings */}
       <path d="M20 28c-10 2-12 10-8 16 6 8 16 4 16-4 0-6-4-10-8-12z" />
       <path d="M44 28c10 2 12 10 8 16-6 8-16 4-16-4 0-6 4-10 8-12z" />
     </svg>
